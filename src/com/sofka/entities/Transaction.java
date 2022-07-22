@@ -6,15 +6,36 @@ public class Transaction {
 
     private Amount amount;
     private LocalDate date;
-    protected TransactionType transactionType;
+    private TransactionType transactionType;
 
-    public Transaction(Amount amount, LocalDate date) {
+    private int balance;
+
+    public Transaction(Amount amount, String date) {
         this.amount = amount;
-        this.date = date;
+        this.date = LocalDate.parse(date);
     }
 
-    public Amount getAmount() {
+    protected Amount getAmount() {
         return amount;
     }
 
+    protected LocalDate getDate() {
+        return date;
+    }
+
+    protected void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    protected TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    protected void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    protected int getBalance() {
+        return balance;
+    }
 }

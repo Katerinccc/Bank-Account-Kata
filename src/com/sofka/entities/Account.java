@@ -12,23 +12,23 @@ public class Account {
     }
 
     public void deposit(Transaction transaction) {
-        transaction.transactionType = TransactionType.CREDIT;
-        statement.addStatement(transaction);
+        transaction.setTransactionType(TransactionType.CREDIT);
         amount = transaction.getAmount();
-        balance += amount.getAmount();
+        this.balance += amount.getAmount();
+        transaction.setBalance(this.balance);
         statement.addStatement(transaction);
     }
 
     public void withdraw(Transaction transaction){
-        transaction.transactionType = TransactionType.DEBIT;
-        statement.addStatement(transaction);
+        transaction.setTransactionType(TransactionType.DEBIT);
         amount = transaction.getAmount();
-        balance -= amount.getAmount();
+        this.balance -= amount.getAmount();
+        transaction.setBalance(this.balance);
         statement.addStatement(transaction);
     }
 
     public void printStatements() {
-
+        statement.printStatements();
     }
 
 }
